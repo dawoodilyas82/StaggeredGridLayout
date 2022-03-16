@@ -17,7 +17,7 @@ class StaggeredAdapter(private val context: Context, private val itemList: Array
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_cell, parent, false);
-        height = parent.height
+        height = parent.width / 2
         return ViewHolder(view)
     }
 
@@ -34,7 +34,7 @@ class StaggeredAdapter(private val context: Context, private val itemList: Array
         }
         val layoutManager: StaggeredGridLayoutManager.LayoutParams =
             holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
-        layoutManager.height = (height / 5) * itemList[position].rows
+        layoutManager.height = height * itemList[position].rows
         if (itemList[position].columns == 2) {
             layoutManager.isFullSpan = true
         }
